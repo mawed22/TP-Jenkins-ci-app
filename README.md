@@ -50,3 +50,6 @@ Ce projet met en place une application Flask simple déployée via une pipeline 
 - Ajoute ta clé SSH privée pour accéder à l’EC2 (ec2-key) → type SSH Username with private key
 
 - Ajoute tes identifiants Docker Hub (dockerhub-creds) → type Username with password
+
+# Variables d’environnement Jenkins (optionnel)***
+ Tu peux configurer des variables globales Jenkins dans Manage Jenkins > Configure System > Global properties > Environment variables EC2_IP

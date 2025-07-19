@@ -28,6 +28,7 @@ pipeline {
         sshagent(['ec2-key']) {
 
           sh 'scp -o StrictHostKeyChecking=no  deploy.sh ubuntu@$EC2_IP:/home/ubuntu/'
+          sh 'ssh -o StrictHostKeyChecking=no ubuntu@$EC2_IP "chmod 700 deploy.sh"'
           sh 'ssh -o StrictHostKeyChecking=no ubuntu@$EC2_IP "bash deploy.sh $DOCKER_IMAGE"'
         }
       }
