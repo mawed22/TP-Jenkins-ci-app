@@ -1,10 +1,10 @@
 #!/bin/bash
 IMAGE=$1
+CONTAINER_NAME=web
 
-if [ -z "$IMAGE" ]; then
-  echo "Usage: $0 <image_name>"
-  exit 1
-fi
+# Stop previous container
+docker rm -f $CONTAINER_NAME 2>/dev/null
 
-docker pull "$IMAGE"
-docker run -d -p 80:80 "$IMAGE"
+# Pull and run
+docker pull $IMAGE
+docker run -d --name $CONTAINER_NAME -p 80:80 $IMAGE
