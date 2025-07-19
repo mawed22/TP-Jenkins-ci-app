@@ -1,7 +1,8 @@
 pipeline {
   agent any
   environment {
-    DOCKER_IMAGE = "mawed33/myapp:latest"
+    CONTAINER_NAME = "myapp-container"
+    DOCKER_IMAGE = "${env.DOCKER_IMAGE }"
     EC2_IP = "${env.EC2_IP}"
   }
   stages {
@@ -28,8 +29,8 @@ pipeline {
         sshagent(['ec2-key']) {
 
           sh 'scp -o StrictHostKeyChecking=no  deploy.sh ubuntu@$EC2_IP:/home/ubuntu/'
-          sh 'ssh -o StrictHostKeyChecking=no ubuntu@$EC2_IP "chmod 700 deploy.sh"'
-          sh 'ssh -o StrictHostKeyChecking=no ubuntu@$EC2_IP "bash deploy.sh $DOCKER_IMAGE"'
+          sh 'ssh -o StrictHostKeyChecking=no ubuntu@$EC2_IP "docker pull $DOCKER_IMAGE"'
+          sh 'ssh -o StrictHostKeyChecking=no ubuntu@$EC2_IP "docker run -d --name $CONTAINER_NAME -p 80:80 $DOCKER_IMAGE"'
         }
       }
     }
