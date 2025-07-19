@@ -27,9 +27,8 @@ pipeline {
     stage('Deploy') {
       steps {
         sshagent(['ec2-key']) {
-
-          sh 'scp -o StrictHostKeyChecking=no  deploy.sh ubuntu@$EC2_IP:/home/ubuntu/'
           sh 'ssh -o StrictHostKeyChecking=no ubuntu@$EC2_IP "docker pull $DOCKER_IMAGE"'
+          sh 'ssh -o StrictHostKeyChecking=no ubuntu@$EC2_IP "docker rm -f "$CONTAINER_NAME" 2>/dev/null || true"'
           sh 'ssh -o StrictHostKeyChecking=no ubuntu@$EC2_IP "docker run -d --name $CONTAINER_NAME -p 80:80 $DOCKER_IMAGE"'
         }
       }
