@@ -31,7 +31,7 @@ Ce projet met en place une application Flask simple déployée via une pipeline 
 ### configuration jenkins
 *** Configuration des plugins Jenkins ***
 
-- Pour le pipeline CI/CD Docker + déploiement SSH, installe ces plugins :
+# Pour le pipeline CI/CD Docker + déploiement SSH, installe ces plugins :
 
 - Pipeline (déjà présent dans Jenkins LTS)
 
@@ -45,7 +45,7 @@ Ce projet met en place une application Flask simple déployée via une pipeline 
 
 
 *** Ajouter les Credentials dans Jenkins ***
-- Dans Jenkins → Credentials → Système → Global credentials
+# Dans Jenkins → Credentials → Global credentials
 
 - Ajoute ta clé SSH privée pour accéder à l’EC2 (ec2-key) → type SSH Username with private key
 
