@@ -1,6 +1,6 @@
 # CI/CD App - Flask + Docker + Jenkins
 
-Ce projet met en place une application Flask simple déployée via une pipeline CI/CD Jenkins. L'application est containerisée avec Docker, puis poussée sur Docker Hub et déployée sur un serveur distant (ex: EC2) grâce à un script bash automatisé.
+Ce projet met en place une application Flask simple déployée via une pipeline CI/CD Jenkins. L'application est containerisée avec Docker, puis poussée sur Docker Hub et déployée sur un serveur distant (EC2) grâce à un script bash automatisé.
 
 ---
 
@@ -26,8 +26,6 @@ Ce projet met en place une application Flask simple déployée via une pipeline 
    docker rm -f TP_app
    docker rmi TP-app
 
-
-
 ### configuration jenkins
 *** Configuration des plugins Jenkins ***
 
@@ -44,12 +42,13 @@ Ce projet met en place une application Flask simple déployée via une pipeline 
 - Git Plugin (pour cloner le repo)
 
 
-*** Ajouter les Credentials dans Jenkins ***
-# Dans Jenkins → Credentials → Global credentials
+# Ajouter les Credentials dans Jenkins
 
-- Ajoute ta clé SSH privée pour accéder à l’EC2 (ec2-key) → type SSH Username with private key
+## Dans Jenkins → Credentials → Global credentials
 
-- Ajoute tes identifiants Docker Hub (dockerhub-creds) → type Username with password
+- Ajout de la clé SSH privée pour accéder à l’EC2 (ec2-key) → type SSH Username with private key
 
-# Variables d’environnement Jenkins (optionnel)***
- Tu peux configurer des variables globales Jenkins dans Manage Jenkins > Configure System > Global properties > Environment variables EC2_IP
+- Ajout des identifiants Docker Hub (dockerhub-creds) → type Username with password
+
+# Variables d’environnement Jenkins (optionnel)
+ Configuration des variables globales Jenkins dans Manage Jenkins > Configure System > Global properties > Environment variables EC2_IP
