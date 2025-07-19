@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    DOCKER_IMAGE = "mawed33/myapp:1.0.1"
+    DOCKER_IMAGE = "mawed33/myapp:latest"
     EC2_IP = "${env.EC2_IP}"
   }
   stages {
